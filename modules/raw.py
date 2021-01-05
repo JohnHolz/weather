@@ -1,6 +1,6 @@
 import pandas as pd, numpy as np, os
 from os.path import isfile, join
-from transform_data_raw import files_in_year, read_inmet_csv, transform_hr
+from transform_data_raw import files_in_year, read_inmet_csv, transform_hr, comma_to_dot
 
 ## change directory to historical data
 os.chdir('../data/raw/inmet-hist')
@@ -32,8 +32,12 @@ hour_2 = final_data['Hora UTC'].dropna().apply(transform_hr)
 final_data['Hora'] = hour_1.append(hour_2)
 final_data = final_data.drop(columns=['DATA (YYYY-MM-DD)','HORA (UTC)','Hora UTC'])
 
+## remove the commas and transform all values in floats
+df_transformed = final_data.drop(columns=["region", "state", "station", "station_code", "Data", "Hora"]).applymap(comma_to_dot)
+df_transformed[["region", "state", "station", "station_code", "Data", "Hora"]] = final_data[["region", "state", "station", "station_code", "Data", "Hora"]]
+
 ## change directory to wright the final data
 os.chdir('../..')
 
 ## write the final data
-final_data.to_csv('preprocessed.csv',index=False)
+df_transformed.to_csv('preprocessed.csv',index=False)
