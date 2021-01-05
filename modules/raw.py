@@ -1,6 +1,6 @@
 import pandas as pd, numpy as np, os
 from os.path import isfile, join
-from transform_data_raw import files_in_year, read_inmet_csv, transform_hr, append_na_columns
+from transform_data_raw import files_in_year, read_inmet_csv, transform_hr
 
 ## change directory to historical data
 os.chdir('../data/raw/inmet-hist')
