@@ -69,7 +69,7 @@ def process_data():
     df_models = df_models[df_models.columns.drop(list(df_models.filter(regex='- height')))]
 
     ## removing first lines with empty values 
-    df = df.iloc[16:,:]
+    df_models = df_models.iloc[16:,:]
 
     ## write to csv
     df_models.to_csv('data/processed.csv',encoding='utf-8',index=False)
