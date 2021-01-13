@@ -37,7 +37,7 @@ def clean_raw_data():
     df_transformed[["region", "state", "station", "station_code", "Data", "Hora"]] = final_data[["region", "state", "station", "station_code", "Data", "Hora"]]
 
     ## change directory to wright the final data
-    os.chdir('../..')
+    os.chdir('../../..')
 
     ## write the final data
-    df_transformed.to_csv('preprocessed.csv',index=False)
+    df_transformed.to_csv('data/preprocessed.csv',index=False)
