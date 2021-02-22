@@ -1,8 +1,13 @@
 import pandas as pd, numpy as np, os
 from os.path import isfile, join
-from modules.transform_data_raw import files_in_year, read_inmet_csv, transform_hr, comma_to_dot
+from modules.transform_data.transform import files_in_year, read_inmet_csv, transform_hr, comma_to_dot
+
 
 def clean_raw_data():
+    """
+    from raw to preprocessed
+    """
+
     ## change directory to historical data
     os.chdir('data/raw/inmet-hist')
 

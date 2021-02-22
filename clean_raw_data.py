@@ -1,5 +1,5 @@
-from modules.get_raw_data import clean_raw_data
-from modules.process_data import process_data
+from modules.transform_data.raw_to_preprocessed import clean_raw_data
+from modules.transform_data.preprocessed_to_processed import process_data
 import os
 
 def main():
