@@ -45,4 +45,4 @@ def clean_raw_data():
     os.chdir('../../..')
 
     ## write the final data
-    df_transformed.to_csv('data/preprocessed.csv',index=False)
+    df_transformed.to_csv('data/preprocessed/preprocessed.csv',index=False)

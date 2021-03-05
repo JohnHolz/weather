@@ -9,7 +9,7 @@ def process_data():
     from preprocessed to processed
     """
     ## get preprocessed data
-    df = pd.read_csv('data/preprocessed.csv')
+    df = pd.read_csv('data/preprocessed/preprocessed.csv')
 
     ## creating the dataset with all combinations of dates and hours
     df_models = td.crossjoin(df['Data'],df['Hora'])
@@ -75,4 +75,4 @@ def process_data():
     df_models = df_models.iloc[16:,:]
 
     ## write to csv
-    df_models.to_csv('data/processed.csv',encoding='utf-8',index=False)
+    df_models.to_csv('data/processed/processed.csv',encoding='utf-8',index=False)
