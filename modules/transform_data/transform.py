@@ -82,3 +82,21 @@ def by_code(df,station_code):
     return df_station
 
 
+################################################
+## processed to datasets tranformations
+#################################################
+
+def make_dummies(series):
+    df = pd.get_dummies(series,drop_first=True)
+    df.columns = list(map(lambda x: '{}_'.format(series.name) + str(x),list(df.columns)))
+    return df
+
+def make_model_dataframe(df, dataset, datasets_info, fixed_columns = ['hour', 'month', 'weekday']):
+    ## filtering the date
+    df = df[df.index > datasets_info[dataset]['start_date']]
+    ## declaring the output-dataframe
+    df_out = pd.DataFrame()
+    ## filtering regex
+    for i in datasets_info[dataset]['regex_columns'] + fixed_columns:
+        df_out = pd.concat([df_out,df.filter(regex=i)],axis=1)
+    return df_out
