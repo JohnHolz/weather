@@ -3,6 +3,11 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 
 def get_today_data(station = 'A612'):
+    
+    # ! getting station`s new data from today 
+    # ? link https://tempo.inmet.gov.br/TabelaEstacoes/{station}
+    # * 
+    
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
     # options.add_argument('--no-sandbox')

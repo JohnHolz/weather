@@ -1,24 +1,41 @@
+
+# * importing libs
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-import modules.transform_data.transform as td
+
+## * adding modules path
+import sys
+sys.path.insert(1, '../')
+
+## * from m01 preprocessed_to_processed
+from d00_modules.m01_data.preprocessed_to_processed import crossjoin, by_code
 
 def process_data():
     """
-    from preprocessed to processed
+    ! read preprocessed 
+    ! create the final dataset -> crossjoin between hour and date
+    ! combine hour and date columns -> transform to datetime this column
+    ! rename the columns
+    ! drop_duplicates just to be shure 
+    ! append columns data from all stations to keep the data granularity
+    ! remove not useful columns
+    ! remove first lines with empty values
+    ! write table 
     """
-    ## get preprocessed data
-    df = pd.read_csv('data/preprocessed/preprocessed.csv')
 
-    ## creating the dataset with all combinations of dates and hours
-    df_models = td.crossjoin(df['Data'],df['Hora'])
+    ## ? get preprocessed data
+    df = pd.read_csv('../../data/02_preprocessed/preprocessed.csv')
+
+    ## ? creating the dataset with all combinations of dates and hours
+    df_models = crossjoin(df['Data'],df['Hora'])
     df_models.columns = ['data','hora']
 
-    ## change type to datetime
+    ## ? change type to datetime
     df_models.iloc[:,0] = pd.to_datetime(df_models.iloc[:,0])
 
-    # renamming columns to lowercase without special characters 
+    # ? renamming columns to lowercase without special characters 
     df.columns = ['precipitacao total, horario (mm)',
     'pressao atmosferica ao nivel da estacao, horaria (mb)',
     'pressao atmosferica max. na hora ant. (aut) (mb)',
@@ -47,19 +64,19 @@ def process_data():
     'data',
     'hora']
 
-    ## keep just date and hour to concatenate other informations
+    ## ! keep just date and hour to concatenate other informations
     df_models = df[['data', 'hora']]
     df_models = df_models.drop_duplicates()
 
-    ## desnormalizing dataset by stations
+    ## ! desnormalizing dataset by stations
     for i in df.station_code.unique():
-        df_temp = td.by_code(df,i)
+        df_temp = by_code(df,i)
         df_models = df_models.merge(df_temp, 
                       how='left', 
                       right_on  = df_temp.iloc[:,-2:].columns.to_list(),
                       left_on = df.iloc[:,-2:].columns.to_list())
 
-    ## remove not useful columns
+    ## ! remove not useful columns
     df_models = df_models[df_models.columns.drop(list(df_models.filter(regex='- data')))]
     df_models = df_models[df_models.columns.drop(list(df_models.filter(regex='- hora')))]
     df_models = df_models[df_models.columns.drop(list(df_models.filter(regex='- station_code')))]
@@ -71,8 +88,8 @@ def process_data():
     df_models = df_models[df_models.columns.drop(list(df_models.filter(regex='- longitude')))]
     df_models = df_models[df_models.columns.drop(list(df_models.filter(regex='- height')))]
 
-    ## removing first lines with empty values 
+    ## ! removing first lines with empty values 
     df_models = df_models.iloc[16:,:]
 
-    ## write to csv
-    df_models.to_csv('data/processed/processed.csv',encoding='utf-8',index=False)
+    ## ! write to csv
+    df_models.to_csv('../../data/03_processed/processed.csv',encoding='utf-8',index=False)
