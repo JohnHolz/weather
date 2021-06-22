@@ -8,12 +8,12 @@ import sys
 sys.path.insert(1, '../')
 
 ## * from m01 raw_to_preprocessed
-from d00_modules.m01_data.raw_to_preprocessed import files_in_year
-from d00_modules.m01_data.raw_to_preprocessed import read_inmet_csv
+from modules.raw_to_preprocessed import files_in_year
+from modules.raw_to_preprocessed import read_inmet_csv
 
 ## * from m00 cleaning
-from d00_modules.m00_general.cleaning import transform_hr
-from d00_modules.m00_general.cleaning import comma_to_dot
+from d00_modules.cleaning import transform_hr
+from d00_modules.cleaning import comma_to_dot
 
 def clean_raw_data():
     """
@@ -62,3 +62,6 @@ def clean_raw_data():
 
     ## ! write the final data
     df_transformed.to_csv('02_preprocessed/preprocessed.csv',index=False)
+
+    ## ! change directory back
+    os.chdir('../src/d01_data')

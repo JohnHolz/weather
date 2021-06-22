@@ -8,10 +8,10 @@ import sys
 sys.path.insert(1, '../')
 
 ## * from m00 processed_to_datasets
-from d00_modules.m00_general.cleaning import make_dummies
+from d00_modules.cleaning import make_dummies
 
 ## * from m01 processed_to_datasets
-from d00_modules.m01_data.processed_to_datasets import make_model_dataframe
+from modules.processed_to_datasets import make_model_dataframe
 
 def make_datasets():
     """

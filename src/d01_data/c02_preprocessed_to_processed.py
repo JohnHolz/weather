@@ -10,7 +10,7 @@ import sys
 sys.path.insert(1, '../')
 
 ## * from m01 preprocessed_to_processed
-from d00_modules.m01_data.preprocessed_to_processed import crossjoin, by_code
+from modules.preprocessed_to_processed import crossjoin, by_code
 
 def process_data():
     """

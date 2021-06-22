@@ -1,26 +1,32 @@
 {
    "dataset_0":{
       "start_date":"2006-11-04",
-      "regex_columns":["A612 - temperatura maxima na hora ant"]
+      "regex_columns":["A612 - temperatura maxima na hora ant"],
+      "contains": "INMET_SE_ES_"
    },
    "dataset_1":{
       "start_date":"2006-11-04",
-      "regex_columns":["A612"]
+      "regex_columns":["A612"],
+      "contains": "INMET_SE_ES_"
    },
    "dataset_2":{
       "start_date":"2006-11-04",
-      "regex_columns":["A612","A617","A615","A616","A614"]
+      "regex_columns":["A612","A617","A615","A616","A614"],
+      "contains": "INMET_SE_ES_"
    },
    "dataset_3":{
       "start_date":"2008-06-23",
-      "regex_columns":["A612","A617","A615","A616","A614","A613","A623","A622"]
+      "regex_columns":["A612","A617","A615","A616","A614","A613","A623","A622"],
+      "contains": "INMET_SE_ES_"
    },
    "dataset_4":{
       "start_date":"2011-09-25",
-      "regex_columns":["A612","A617","A615","A616","A614","A613","A623","A622","A657"]
+      "regex_columns":["A612","A617","A615","A616","A614","A613","A623","A622","A657"],
+      "contains": "INMET_SE_ES_"
    },
    "dataset_5":{
       "start_date":"2017-03-23",
-      "regex_columns":["A612","A617","A615","A616","A614","A613","A623","A622","A657","A631","A633","A632","A634"]
+      "regex_columns":["A612","A617","A615","A616","A614","A613","A623","A622","A657","A631","A633","A632","A634"],
+      "contains": "INMET_SE_ES_"
    }
 }
