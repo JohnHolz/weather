@@ -46,9 +46,9 @@ def make_datasets():
     df.hour = df.hour.apply(lambda x: x.split(':')[0])
     
     ## ! selected_hours to make dataframe small
-    selected_hours = ['00','03','06','09','12','15','18','21','24']
+    # selected_hours = ['00','03','06','09','12','15','18','21','24']
+    # df = df[df.hour.isin(selected_hours)]
     
-    df = df[df.hour.isin(selected_hours)]
     df = pd.concat((df,make_dummies(df['hour'])),axis=1)
     
     ## ? set an index
