@@ -3,13 +3,13 @@
 import pandas as pd, numpy as np, os
 from os.path import isfile, join
 
-## * adding modules path
-import sys
-sys.path.insert(1, '../')
-
 ## * from m01 raw_to_preprocessed
 from modules.raw_to_preprocessed import files_in_year
 from modules.raw_to_preprocessed import read_inmet_csv
+
+## * adding modules path
+import sys
+sys.path.insert(1, '../')
 
 ## * from m00 cleaning
 from d00_modules.cleaning import transform_hr
