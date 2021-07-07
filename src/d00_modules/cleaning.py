@@ -1,6 +1,6 @@
 import pandas as pd
 
-def transform_hr(string):
+def transform_hr(string:str):
     """
     Hours came in 2 formats: "HH:MM" and "HHMM UTC" 
     so this function transform the second in the first
@@ -10,7 +10,7 @@ def transform_hr(string):
     return string
 
 
-def comma_to_dot(value):
+def comma_to_dot(value:str):
     """
     brazil uses comma, so we need to transform comma to dots and retransform to float
     This function transforms a value in string, remove dots and then replace commas to dots

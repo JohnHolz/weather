@@ -52,6 +52,7 @@ def make_datasets():
     ## ! concatenate 
     time_df = time_series_dataframe('2006-11-01','2021-01-01').iloc[1:]
     df = pd.concat([df,time_df],axis=1).iloc[:,1:]
+    df.index.name = 'date_time'
 
     datasets = 'datasets.json'
     with open(datasets) as data:
@@ -60,4 +61,4 @@ def make_datasets():
     dataset_keys = list(datasets.keys()) 
 
     for i in dataset_keys:
-        make_model_dataframe(df,datasets[i]).to_csv('../../data/04_datasets/{dataset}.csv'.format(dataset = i),index = False)
+        make_model_dataframe(df,datasets[i]).to_csv('../../data/04_datasets/{dataset}.csv'.format(dataset = i))
