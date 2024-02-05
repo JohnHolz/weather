@@ -1,0 +1,16 @@
+version: '3.5'
+services:
+  database:
+    image: postgres:11.1-alpine
+    environment:
+      - POSTGRES_DB=weather
+      - POSTGRES_USER=weather
+      - POSTGRES_PASSWORD=weather12
+      - TZ=GMT-3
+    volumes:
+      - ".:/var/lib/postgresql/data"
+    ports:
+      - "5400:5432"
+    restart: unless-stopped
+volumes:
+  postgres_data:    

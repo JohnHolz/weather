@@ -1,0 +1,18 @@
+version: "3"
+services:
+  weather-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=weather
+      - POSTGRES_USER=weather
+      - POSTGRES_PASSWORD=weather123weather
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - PG_TRUST_LOCALNET=true
+      - TZ=GMT-3
+    volumes:
+      - "postgres_data:/var/lib/postgresql/data"
+    ports:
+      - "5408:5432"
+    restart: unless-stopped
+volumes:
+  postgres_data:

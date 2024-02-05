@@ -1,0 +1,14 @@
+
+FROM python:3.10
+ADD . /code
+WORKDIR /code
+RUN apt-get update -y 
+RUN apt-get install -y libldap2-dev
+RUN apt-get install -y libsasl2-dev
+RUN apt-get install -y libpq-dev
+RUN apt-get install -y ldap-utils 
+RUN apt-get install -y lcov 
+RUN apt-get install valgrind -y
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+CMD python main.py

@@ -1,0 +1,30 @@
+renamed_columns = ['data','hora','precipitacao total,horario (mm)','pressao atmosferica ao nivel da estacao (mb)','pressao atmosferica max. na hora ant. (aut) (mb)','pressao atmosferica min. na hora ant. (aut) (mb)','radiation (kj/m2)','temperatura do ar - bulbo seco (°c)','temperatura do ponto de orvalho (°c)','temperatura maxima na hora ant. (aut) (°c)','temperatura minima na hora ant. (aut) (°c)','temperatura orvalho max. na hora ant. (aut) (°c)','temperatura orvalho min. na hora ant. (aut) (°c)','umidade rel. max. na hora ant. (aut) (%)','umidade rel. min. na hora ant. (aut) (%)','umidade relativa do ar, horaria (%)','vento direcao horaria (gr) (° (gr))','vento rajada maxima (m/s)','vento velocidade horaria (m/s)','region','state','station','station_code','latitude','longitude','height']
+renamed_columns_en = [
+    'date',
+    'hour',
+    'total precipitation (mm)',
+    'atmospheric pressure at station level (mb)',
+    'atmospheric pressure max. in the previous hour (mb)',
+    'atmospheric pressure min. in the previous hour (mb)',
+    'radiation (kj/m2)',
+    'air temperature - dry bulb (°c)',
+    'dew point temperature (°c)',
+    'maximum temperature in the previous hour (°c)',
+    'minimum temperature in the previous hour (°c)',
+    'dew temperature max. in the previous hour (°c)',
+    'dew temperature min. in the previous hour (°c)',
+    'relative humidity max. in the previous hour (%)',
+    'relative humidity min. in the previous hour (%)',
+    'air relative humidity (%)',
+    'wind direction (° (gr))',
+    'wind max gust (m/s)',
+    'wind speed (m/s)',
+    'region',
+    'state',
+    'station',
+    'station_code',
+    'latitude',
+    'longitude',
+    'height']
+
+print(len(renamed_columns)==len(renamed_columns_en))

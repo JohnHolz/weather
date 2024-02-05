@@ -1,0 +1,10 @@
+FROM node:16.8
+COPY . ./application
+WORKDIR /application
+
+# building the app
+RUN npm i --save-dev @types/fernet
+RUN npm i
+RUN npm run build
+#RUN npm run start
+CMD ["npm","start"]
