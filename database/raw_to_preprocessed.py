@@ -23,14 +23,14 @@ def fill_region_raw(contains = 'INMET_',region='southeast'):
     for i in sorted(os.listdir(data_folder)):
         df = pd.DataFrame()
         for j in files_in_year(data_folder+i, contains = contains):
-            df = df.append(read_inmet_csv(data_folder + i + '/' + j))
+            df = df._append(read_inmet_csv(data_folder + i + '/' + j))
             print(j)
         
         if 'RADIACAO GLOBAL (KJ/m²)' in df.columns:
             df.rename(columns={'RADIACAO GLOBAL (KJ/m²)': 'RADIACAO GLOBAL (Kj/m²)'},inplace=True)
         df['latitude'], df['longitude'], df['height'] = pd.to_numeric(df.latitude.apply(comma_to_dot)), pd.to_numeric(df.longitude.apply(comma_to_dot)), pd.to_numeric(df.height.apply(comma_to_dot))
         df.fillna(-9999,inplace=True)
-        df.to_csv(f'../../data/02_preprocessed/{region}/{i}.csv',index=False)
+        df.to_csv(f'data/02_preprocessed/{region}/{i}.csv',index=False)
         print(i)
 
 if __name__ == "__main__":
